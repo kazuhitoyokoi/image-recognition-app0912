@@ -1,8 +1,12 @@
 {
     "name": "image-recognition-app",
-    "description": "画像認識を行うアプリケーションです。",
-    "version": "0.0.1",
-    "dependencies": {},
+    "description": "画像認識を行うアプリケーション",
+    "version": "4.5.1",
+    "dependencies": {
+        "@flowfuse/node-red-dashboard": "1.4.1",
+        "@sumit_shinde_84/node-red-dashboard-2-ui-webcam": "1.0.2",
+        "node-red-contrib-tensorflow": "0.4.2"
+    },
     "node-red": {
         "settings": {
             "flowFile": "flows.json",

@@ -1,1 +1,139 @@
-[]
+[
+    {
+        "id": "f1d0e942525fb7fa",
+        "type": "tab",
+        "label": "フロー 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "82413786789ddd93",
+        "type": "ui-base",
+        "name": "画面名",
+        "path": "/dashboard",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "navigationStyle": "default"
+    },
+    {
+        "id": "968498621d165f20",
+        "type": "ui-theme",
+        "name": "テーマ名",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094ce",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "3eafc0c9cff9aefd",
+        "type": "ui-page",
+        "name": "ページ名",
+        "ui": "82413786789ddd93",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "968498621d165f20",
+        "order": -1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "89949a1e6ab3d975",
+        "type": "ui-group",
+        "name": "グループ名",
+        "page": "3eafc0c9cff9aefd",
+        "width": "6",
+        "height": "1",
+        "order": -1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "4995b0121e3bc97a",
+        "type": "ui-webcam",
+        "z": "f1d0e942525fb7fa",
+        "name": "",
+        "group": "89949a1e6ab3d975",
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "x": 170,
+        "y": 140,
+        "wires": [
+            [
+                "47cbd98e8202392e"
+            ]
+        ]
+    },
+    {
+        "id": "47cbd98e8202392e",
+        "type": "function",
+        "z": "f1d0e942525fb7fa",
+        "name": "function 1",
+        "func": "msg.payload = Buffer.from(msg.payload.substring('data:image/png;base64,'.length), 'base64');\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "8ad023cca74220ef"
+            ]
+        ]
+    },
+    {
+        "id": "8ad023cca74220ef",
+        "type": "cocossd",
+        "z": "f1d0e942525fb7fa",
+        "name": "",
+        "x": 160,
+        "y": 240,
+        "wires": [
+            [
+                "490de6c9e993cda0"
+            ]
+        ]
+    },
+    {
+        "id": "490de6c9e993cda0",
+        "type": "ui-text",
+        "z": "f1d0e942525fb7fa",
+        "group": "89949a1e6ab3d975",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "画像認識結果",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 420,
+        "y": 240,
+        "wires": []
+    }
+]
